@@ -11,6 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.List;
 
 
@@ -18,6 +24,8 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
     private List<Flat> mFlatList;
     private Context mContext;
     private RecyclerView mRecyclerV;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+
 
 
     // Provide a reference to the views for each data item
@@ -28,6 +36,7 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
         public TextView flatNameTxtV;
         public TextView flatAddressTxtV;
         public TextView flatDevTxtV;
+        public ImageView flatImage;
         Flat mFlat;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
@@ -37,6 +46,7 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
             flatNameTxtV = (TextView) itemView.findViewById(R.id.name);
             flatAddressTxtV = (TextView) itemView.findViewById(R.id.address);
             flatDevTxtV = (TextView) itemView.findViewById(R.id.dev);
+            flatImage=(ImageView) itemView.findViewById(R.id.image);
         }
 
         public void bind(Flat flat){
@@ -44,6 +54,13 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
             flatNameTxtV.setText("Name: " + flat.getName());
             flatAddressTxtV.setText("Address: " + flat.getAddress());
             flatDevTxtV.setText("Dev: " + flat.getDev());
+
+            StorageReference gsReference = storage.getReferenceFromUrl("gs://nest1-e6f6b.appspot.com/small/"+flat.getName()+".jpg");
+
+            Glide.with(mContext)
+                    .load(gsReference)
+                    .into(flatImage);
+
         }
 
         @Override

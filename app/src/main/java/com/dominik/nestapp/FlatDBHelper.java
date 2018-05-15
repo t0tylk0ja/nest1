@@ -7,11 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
 public class FlatDBHelper  extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "people.db";
+    public static final String DATABASE_NAME = "flats.db";
     private static final int DATABASE_VERSION = 1 ;
     public static final String TABLE_NAME = "People";
     public static final String COLUMN_ID = "_id";
@@ -29,7 +30,11 @@ public class FlatDBHelper  extends SQLiteOpenHelper {
 public static FlatDBHelper getInstanse(Context ctx){
     if (mInstance == null) {
         mInstance = new FlatDBHelper(ctx.getApplicationContext());
-        mInstance.addSomeFlats();
+
+        File f = ctx.getDatabasePath(DATABASE_NAME);
+        long dbSize = f.length();
+        if(dbSize==0){
+        mInstance.addSomeFlats();}
     }
     return mInstance;
 }
