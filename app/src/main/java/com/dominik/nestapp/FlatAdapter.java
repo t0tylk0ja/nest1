@@ -57,7 +57,8 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
 
             StorageReference gsReference = storage.getReferenceFromUrl("gs://nest1-e6f6b.appspot.com/small/"+flat.getName()+".jpg");
 
-            Glide.with(mContext)
+            Glide
+                    .with(mContext)
                     .load(gsReference)
                     .into(flatImage);
 
