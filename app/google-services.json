@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "707859006031",
+    "firebase_url": "https://nest1-e6f6b.firebaseio.com",
+    "project_id": "nest1-e6f6b",
+    "storage_bucket": "nest1-e6f6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707859006031:android:790cb85e3a15bcab",
+        "android_client_info": {
+          "package_name": "com.dominik.nestapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707859006031-g2dbeprqm0e3hlhvc5rb3bckkkrnrtrh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dominik.nestapp",
+            "certificate_hash": "2082808e6a05c68561b9b742067d1fa61afc762f"
+          }
+        },
+        {
+          "client_id": "707859006031-mpkkkeuu3955j3eb93ovjbora5d80hov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6ML4iYhNTTxJz3fbEtmkZqAhh5lqnjWs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707859006031-mpkkkeuu3955j3eb93ovjbora5d80hov.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
