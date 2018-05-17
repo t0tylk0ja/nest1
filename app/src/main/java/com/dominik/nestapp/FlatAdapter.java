@@ -12,11 +12,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
+
+
+import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.module.GlideModule;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
+import java.io.InputStream;
 import java.util.List;
 
 
@@ -27,11 +32,10 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
 
-
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
         public TextView flatNameTxtV;
         public TextView flatAddressTxtV;
@@ -46,40 +50,34 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
             flatNameTxtV = (TextView) itemView.findViewById(R.id.name);
             flatAddressTxtV = (TextView) itemView.findViewById(R.id.address);
             flatDevTxtV = (TextView) itemView.findViewById(R.id.dev);
-            flatImage=(ImageView) itemView.findViewById(R.id.image);
+            flatImage = (ImageView) itemView.findViewById(R.id.image);
         }
 
-        public void bind(Flat flat){
-            mFlat=flat;
+        public void bind(Flat flat) {
+            mFlat = flat;
             flatNameTxtV.setText("Name: " + flat.getName());
             flatAddressTxtV.setText("Address: " + flat.getAddress());
             flatDevTxtV.setText("Dev: " + flat.getDev());
 
-            StorageReference gsReference = storage.getReferenceFromUrl("gs://nest1-e6f6b.appspot.com/small/"+flat.getName()+".jpg");
-
-            Glide
-                    .with(mContext)
-                    .load(gsReference)
-                    .into(flatImage);
-
         }
 
         @Override
-        public void onClick(View view){
+        public void onClick(View view) {
             //
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public FlatAdapter(List<Flat> myDataset) {
+    public FlatAdapter(List<Flat> myDataset, Context context, RecyclerView recyclerView) {
         mFlatList = myDataset;
+        mContext = context;
+        mRecyclerV = recyclerView;
         setHasStableIds(true);
-          }
+    }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public FlatAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                       int viewType) {
+    public FlatAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         return new ViewHolder(layoutInflater, parent);
 
@@ -94,6 +92,12 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
         Flat flat = mFlatList.get(position);
         holder.bind(flat);
 
+        StorageReference gsReference = storage.getReferenceFromUrl("gs://nest1-e6f6b.appspot.com/small/" + flat.getName() + ".jpg");
+
+        Glide
+                .with(mContext)
+                .load(gsReference)
+                .into(holder.flatImage);
 
     }
 
@@ -112,4 +116,8 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
     public int getItemViewType(int position) {
         return position;
     }
+
 }
+
+
+

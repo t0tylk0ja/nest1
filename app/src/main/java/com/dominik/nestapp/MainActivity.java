@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private void populateRecyclerView(String filter){
         dbHelper = FlatDBHelper.getInstanse(this);
         //dbHelper.addSomeFlats();
-        adapter = new FlatAdapter(dbHelper.peopleList(filter));
+        adapter = new FlatAdapter(dbHelper.peopleList(filter),this,mRecyclerView);
         mRecyclerView.setAdapter(adapter);
 
     }

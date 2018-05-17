@@ -138,14 +138,6 @@ public static FlatDBHelper getInstanse(Context ctx){
     }
 
 
-//    public void updateFlatRecord(long personId, Context context, Flat updatedFlat) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        //you can use the constants above instead of typing the column names
-//        db.execSQL("UPDATE  "+TABLE_NAME+" SET name ='"+ updatedFlat.getName() + "', address ='" + updatedFlat.getAddress() + "'  WHERE _id='" + personId + "'");
-//        Toast.makeText(context, "Updated successfully.", Toast.LENGTH_SHORT).show();
-//    }
-
-
 
 
 }
