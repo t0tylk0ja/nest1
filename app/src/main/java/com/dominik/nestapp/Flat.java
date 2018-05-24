@@ -6,13 +6,17 @@ public class Flat {
     private String name;
     private String address;
     private String dev;
+    private String minUrl;
+    private String maxUrl;
 
     public Flat(){}
 
-    public Flat(String name,String address,String dev){
+    public Flat(String name,String address,String dev,String minUrl,String maxUrl){
         this.name=name;
         this.address=address;
         this.dev=dev;
+        this.minUrl=minUrl;
+        this.maxUrl=maxUrl;
     }
 
     public long getId() {
@@ -31,6 +35,12 @@ public class Flat {
         return dev;
     }
 
+    public String getMinUrl() {
+        return minUrl;
+    }
+
+    public String getMaxUrl() { return maxUrl; }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -45,5 +55,12 @@ public class Flat {
 
     public void setDev(String dev) {
         this.dev = dev;
+    }
+
+    public void setMinUrl(String minUrl) {
+        this.minUrl = minUrl;
+    }
+
+    public void setMaxUrl(String maxUrl) { this.maxUrl = maxUrl;
     }
 }

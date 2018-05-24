@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide;
 
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.module.GlideModule;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -63,7 +62,16 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
 
         @Override
         public void onClick(View view) {
-            //
+             Context viewContext= view.getContext();
+            Intent intent = new Intent(viewContext, FlatActivity.class);
+            putContent(intent);
+            viewContext.startActivity(intent);
+
+        }
+
+        public void putContent(Intent intent){
+            intent.putExtra("name", mFlat.getName());
+            intent.putExtra("maxUrl",mFlat.getMaxUrl());
         }
     }
 
@@ -91,12 +99,13 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
 
         Flat flat = mFlatList.get(position);
         holder.bind(flat);
+        String minUrl=flat.getMinUrl();
 
-        StorageReference gsReference = storage.getReferenceFromUrl("gs://nest1-e6f6b.appspot.com/small/" + flat.getName() + ".jpg");
+
 
         Glide
                 .with(mContext)
-                .load(gsReference)
+                .load(minUrl)
                 .into(holder.flatImage);
 
     }
