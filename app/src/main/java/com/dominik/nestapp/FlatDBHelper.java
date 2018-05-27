@@ -138,13 +138,13 @@ public static FlatDBHelper getInstanse(Context ctx){
     }
 
     public void addSomeFlats(){
-        saveNewFlat("Alabama","Słowackiego","ATAL",
+        saveNewFlat("Alabama"," Wrocław, Krawiecka 1","ATAL",
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FAlabama.jpg?alt=media&token=6c70f9ff-097d-4605-b5f5-27a1f016fec4",
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2FAlabama_max.jpg?alt=media&token=cd91735f-ec08-4785-a349-897f93d1019f");
-        saveNewFlat("Chicago","Grunwaldzka","MURAPOL",
+        saveNewFlat("Chicago"," Wrocław, Pilczycka 101","MURAPOL",
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FChicago.jpg?alt=media&token=565aa1e4-961d-4092-8af6-eb5ee6742a00",
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2FChicago_max.jpg?alt=media&token=40896244-d922-451e-acb7-e2c1bccafd7a");
-        saveNewFlat("Miami","Piastowska","ATAL",
+        saveNewFlat("Miami","Wrocław, Grunwaldzka 98","ATAL",
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2FMiami_max.jpg?alt=media&token=03f5f1b5-2c3e-42ee-9903-2d872443a732");
 
