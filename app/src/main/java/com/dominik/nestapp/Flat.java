@@ -8,16 +8,32 @@ public class Flat {
     private String dev;
     private String minUrl;
     private String maxUrl;
+    double area;
+    int rooms;
+    int floor;
+    //Boolean balcony
+    //Boolean equip
+    //Boolean parking
+    //int cityDistance
+    //railway distance
+    //Boolean busStop
+
 
     public Flat(){}
 
-    public Flat(String name,String address,String dev,String minUrl,String maxUrl){
+    public Flat(String name,String address,String dev,double area, int rooms, int floor, String minUrl,String maxUrl){
         this.name=name;
         this.address=address;
         this.dev=dev;
         this.minUrl=minUrl;
         this.maxUrl=maxUrl;
+        this.area=area;
+        this.rooms=rooms;
+        this.floor=floor;
+
     }
+
+    //GETTERS
 
     public long getId() {
         return id;
@@ -41,6 +57,13 @@ public class Flat {
 
     public String getMaxUrl() { return maxUrl; }
 
+    public double getArea() { return area; }
+
+    public int getRooms() { return rooms; }
+
+    public int getFloor() { return floor; }
+    //SETTERS
+
     public void setId(long id) {
         this.id = id;
     }
@@ -61,6 +84,11 @@ public class Flat {
         this.minUrl = minUrl;
     }
 
-    public void setMaxUrl(String maxUrl) { this.maxUrl = maxUrl;
-    }
+    public void setArea(double area) { this.area = area; }
+
+    public void setRooms(int rooms) { this.rooms = rooms; }
+
+    public void setFloor(int floor) { this.floor = floor; }
+
+    public void setMaxUrl(String maxUrl) { this.maxUrl = maxUrl; }
 }

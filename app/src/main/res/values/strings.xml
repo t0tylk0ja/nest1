@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">nestApp</string>
+    <string name="dev" translatable="false">DEVELOPER</string>
+    <string name="floor" translatable="false">FLOOR</string>
+    <string name="area" translatable="false">AREA</string>
+    <string name="rooms" translatable="false">ROOMS</string>
+
 </resources>

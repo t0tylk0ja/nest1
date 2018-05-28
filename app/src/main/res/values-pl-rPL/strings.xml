@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">nestApp</string>
+    <string name="dev" translatable="false">DEWELOPER</string>
+    <string name="floor" translatable="false">PIĘTRO</string>
+    <string name="area" translatable="false">POWIERZCHNIA</string>
+    <string name="rooms" translatable="false">LICZBA POKOI</string>
+</resources>

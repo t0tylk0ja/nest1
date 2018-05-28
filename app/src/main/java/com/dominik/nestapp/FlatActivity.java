@@ -16,6 +16,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -63,10 +64,15 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .load(devToShow.getDevLogo())
                 .into(tvDevLogo);
 
+//flat info
+        TextView tvArea=(TextView) findViewById(R.id.flatArea);
+        TextView tvRooms=(TextView) findViewById(R.id.flatRooms);
+        TextView tvFloor=(TextView) findViewById(R.id.flatFloor);
 
+        tvArea.setText(String.valueOf(extras.getDouble("area"))+"m\u00B2");
+        tvRooms.setText(String.valueOf(extras.getInt("rooms")));
+        tvFloor.setText(String.valueOf(extras.getInt("floor")));
         //mapa
-
-
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
             mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
@@ -126,6 +132,7 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         gmap = googleMap;
         gmap.setMinZoomPreference(12);
         gmap.setIndoorEnabled(true);
+        gmap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this,R.raw.style_json));
         UiSettings uiSettings = gmap.getUiSettings();
         uiSettings.setIndoorLevelPickerEnabled(true);
         uiSettings.setMyLocationButtonEnabled(true);
