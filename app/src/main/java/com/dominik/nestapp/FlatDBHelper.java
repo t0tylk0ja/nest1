@@ -20,6 +20,7 @@ public class FlatDBHelper  extends SQLiteOpenHelper {
     public static final String COLUMN_ADDRESS = "age";
     public static final String COLUMN_DEV = "dev";
     public static final String COLUMN_AREA = "area";
+    public static final String COLUMN_STORAGE = "storage";
     public static final String COLUMN_ROOMS = "rooms";
     public static final String COLUMN_FLOOR = "floor";
     public static final String COLUMN_BALCONY = "balcony";
@@ -56,6 +57,7 @@ public static FlatDBHelper getInstanse(Context ctx){
                 COLUMN_ADDRESS + " TEXT NOT NULL, " +
                 COLUMN_DEV + " TEXT NOT NULL, " +
                 COLUMN_AREA + " REAL NOT NULL, " +
+                COLUMN_STORAGE + " REAL NOT NULL, " +
                 COLUMN_ROOMS + " INTEGER NOT NULL, " +
                 COLUMN_FLOOR + " INTEGER NOT NULL, " +
                 COLUMN_BALCONY + " INTEGER NOT NULL, " +
@@ -74,7 +76,7 @@ public static FlatDBHelper getInstanse(Context ctx){
         this.onCreate(db);
     }
     /**create record**/
-    public void saveNewFlat(String name, String address, String dev,double area, int rooms, int floor,
+    public void saveNewFlat(String name, String address, String dev,double area,double storage, int rooms, int floor,
                             int balcony, int parking, int equip,int garden,String minUrl,String maxUrl) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -83,6 +85,7 @@ public static FlatDBHelper getInstanse(Context ctx){
         values.put(COLUMN_ADDRESS, address);
         values.put(COLUMN_DEV, dev);
         values.put(COLUMN_AREA, area);
+        values.put(COLUMN_STORAGE,storage);
         values.put(COLUMN_ROOMS, rooms);
         values.put(COLUMN_FLOOR, floor);
         values.put(COLUMN_BALCONY, balcony);
@@ -122,6 +125,7 @@ public static FlatDBHelper getInstanse(Context ctx){
                 flat.setAddress(cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS)));
                 flat.setDev(cursor.getString(cursor.getColumnIndex(COLUMN_DEV)));
                 flat.setArea(cursor.getDouble(cursor.getColumnIndex(COLUMN_AREA)));
+                flat.setStorage(cursor.getDouble(cursor.getColumnIndex(COLUMN_STORAGE)));
                 flat.setRooms(cursor.getInt(cursor.getColumnIndex(COLUMN_ROOMS)));
                 flat.setFloor(cursor.getInt(cursor.getColumnIndex(COLUMN_FLOOR)));
                 flat.setBalcony(cursor.getInt(cursor.getColumnIndex(COLUMN_BALCONY)));
@@ -151,6 +155,7 @@ public static FlatDBHelper getInstanse(Context ctx){
             receivedFlat.setAddress(cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS)));
             receivedFlat.setDev(cursor.getString(cursor.getColumnIndex(COLUMN_DEV)));
             receivedFlat.setArea(cursor.getDouble(cursor.getColumnIndex(COLUMN_AREA)));
+            receivedFlat.setStorage(cursor.getDouble(cursor.getColumnIndex(COLUMN_STORAGE)));
             receivedFlat.setRooms(cursor.getInt(cursor.getColumnIndex(COLUMN_ROOMS)));
             receivedFlat.setFloor(cursor.getInt(cursor.getColumnIndex(COLUMN_FLOOR)));
             receivedFlat.setBalcony(cursor.getInt(cursor.getColumnIndex(COLUMN_BALCONY)));
@@ -174,13 +179,13 @@ public static FlatDBHelper getInstanse(Context ctx){
     }
 
     public void addSomeFlats(){
-        saveNewFlat("Alabama"," Wrocław, Krawiecka 1","ATAL",45.5,3,2,1,0,1,0,
+        saveNewFlat("Alabama"," Wrocław, Krawiecka 1","ATAL",45.5,3.0, 3,2,1,0,1,0,
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FAlabama.jpg?alt=media&token=6c70f9ff-097d-4605-b5f5-27a1f016fec4",
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2FAlabama_max.jpg?alt=media&token=cd91735f-ec08-4785-a349-897f93d1019f");
-        saveNewFlat("Chicago"," Wrocław, Pilczycka 101","MURAPOL",25.0,1,3,0,1,0,1,
+        saveNewFlat("Chicago"," Wrocław, Pilczycka 101","MURAPOL",25.0,5.0, 1,3,0,1,0,1,
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FChicago.jpg?alt=media&token=565aa1e4-961d-4092-8af6-eb5ee6742a00",
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2FChicago_max.jpg?alt=media&token=40896244-d922-451e-acb7-e2c1bccafd7a");
-        saveNewFlat("Miami","Wrocław, Grunwaldzka 98","ATAL",37.0,2,0,1,1,1,1,
+        saveNewFlat("Miami","Wrocław, Grunwaldzka 98","ATAL",37.0,2.0,2,0,1,1,1,1,
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2FMiami_max.jpg?alt=media&token=03f5f1b5-2c3e-42ee-9903-2d872443a732");
 

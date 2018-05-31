@@ -72,6 +72,7 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
         public void putContent(Intent intent){
             intent.putExtra("name", mFlat.getName());
             intent.putExtra("area", mFlat.getArea());
+            intent.putExtra("storage", mFlat.getStorage());
             intent.putExtra("rooms",mFlat.getRooms());
             intent.putExtra("floor",mFlat.getFloor());
             intent.putExtra("maxUrl",mFlat.getMaxUrl());

@@ -9,25 +9,24 @@ public class Flat {
     private String minUrl;
     private String maxUrl;
     double area;
+    double storage;
     int rooms;
     int floor;
     int balcony;
     int equip;
     int parking;
     int garden;
-    //int cityDistance
-    //railway distance
-    //Boolean busStop
 
 
     public Flat(){}
 
-    public Flat(String name,String address,String dev,double area, int rooms, int floor, int balcony, int parking,
+    public Flat(String name,String address,String dev,double area,double storage, int rooms, int floor, int balcony, int parking,
                 int equip,int garden, String minUrl,String maxUrl){
         this.name=name;
         this.address=address;
         this.dev=dev;
         this.area=area;
+        this.storage=storage;
         this.rooms=rooms;
         this.floor=floor;
         this.balcony=balcony;
@@ -76,6 +75,8 @@ public class Flat {
 
     public int getGarden() { return garden; }
 
+    public double getStorage() { return storage; }
+
     //SETTERS
 
     public void setId(long id) {
@@ -114,4 +115,6 @@ public class Flat {
     public void setParking(int parking) { this.parking = parking; }
 
     public void setGarden(int garden) { this.garden = garden; }
+
+    public void setStorage(double storage) { this.storage = storage; }
 }

@@ -76,6 +76,7 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         TextView tvStorage=(TextView) findViewById(R.id.flatStorage);
 
         tvArea.setText(String.valueOf(extras.getDouble("area"))+"m\u00B2");
+        tvStorage.setText(String.valueOf(extras.getDouble("storage"))+"m\u00B2");
         tvRooms.setText(String.valueOf(extras.getInt("rooms")));
         tvFloor.setText(String.valueOf(extras.getInt("floor")));
 
