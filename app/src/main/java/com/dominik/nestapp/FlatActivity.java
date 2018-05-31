@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Geocoder;
 import android.location.Address;
+import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -29,6 +30,10 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
     Bundle extras;
     HashMap<String,Dev> devList;
     Dev devToShow;
+    TextView tvCentre;
+    TextView tvAirport;
+    TextView tvRailway;
+
 
     private MapView mapView;
     private GoogleMap gmap;
@@ -68,6 +73,7 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         TextView tvArea=(TextView) findViewById(R.id.flatArea);
         TextView tvRooms=(TextView) findViewById(R.id.flatRooms);
         TextView tvFloor=(TextView) findViewById(R.id.flatFloor);
+        TextView tvStorage=(TextView) findViewById(R.id.flatStorage);
 
         tvArea.setText(String.valueOf(extras.getDouble("area"))+"m\u00B2");
         tvRooms.setText(String.valueOf(extras.getInt("rooms")));
@@ -101,6 +107,27 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .with(this)
                 .load(gardenIcon)
                 .into(gardenView);
+//distances
+        setDistances();
+        ImageView centreView = (ImageView) findViewById(R.id.centreView);
+        ImageView railwayView = (ImageView) findViewById(R.id.airportView);
+        ImageView airportView = (ImageView) findViewById(R.id.railwayView);
+
+        Glide
+                .with(this)
+                .load("https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fcentre.png?alt=media&token=763b47d8-a953-485c-b979-c7b2edacbc32")
+                .into(centreView);
+
+        Glide
+                .with(this)
+                .load("https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Ftrain.png?alt=media&token=2d591ee8-b9dc-4ae0-80a4-9493452a4859")
+                .into(airportView);
+
+        Glide
+                .with(this)
+                .load("https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fplane.png?alt=media&token=3f8a8329-46e8-483b-84c6-4c9f1c11afb6")
+                .into(railwayView);
+
 
 //mapa
         Bundle mapViewBundle = null;
@@ -111,6 +138,41 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(mapViewBundle);
         mapView.getMapAsync(this);
+
+    }
+
+    public void setDistances(){
+        //railway
+        Location railwayStation=new Location("railway");
+        railwayStation.setLatitude(51.098767);
+        railwayStation.setLongitude(17.036519);
+        //city centre
+        Location cityCentre=new Location("cityCentre");
+        cityCentre.setLatitude(51.109454);
+        cityCentre.setLongitude(17.031332);
+        //airport
+        Location airport=new Location("airport");
+        airport.setLatitude(51.104165);
+        airport.setLongitude(16.880933);
+
+
+
+
+        Location flatLocation=new Location("flatLocation");
+        Address flatAddress=getAddress(this,extras.getString("address"));
+        flatLocation.setLatitude(flatAddress.getLatitude());
+        flatLocation.setLongitude(flatAddress.getLongitude());
+
+        double railwayDistance = railwayStation.distanceTo(flatLocation)/1000;
+        double cityDistance = cityCentre.distanceTo(flatLocation)/1000;
+        double airportDistance = airport.distanceTo(flatLocation)/1000;
+
+        tvAirport = (TextView)findViewById(R.id.distanceAirport);
+        tvRailway = (TextView)findViewById(R.id.distanceRailway);
+        tvCentre = (TextView)findViewById(R.id.distanceCentre);
+        tvAirport.setText(String.format("%.2f",airportDistance)+"km");
+        tvRailway.setText(String.format("%.2f",railwayDistance)+"km");
+        tvCentre.setText(String.format("%.2f",cityDistance)+"km");
 
     }
 
@@ -201,6 +263,25 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         return p1;
+    }
+
+    public Address getAddress(Context context,String address){
+        Geocoder coder = new Geocoder(context);
+        List<Address> address2;
+        Address location=null;
+
+        try {
+            // May throw an IOException
+            address2 = coder.getFromLocationName(address, 5);
+
+            location = address2.get(0);
+
+        } catch (IOException ex) {
+
+            ex.printStackTrace();
+        }
+
+        return location;
     }
 
 

@@ -9,5 +9,10 @@
     <string name="garage">GARAGE</string>
     <string name="greenarea">GREEN AREA</string>
     <string name="equip">OPTIONAL EQUIPMENT</string>
+    <string name="storage">STORAGE AREA</string>
+    <string name="distances">DISTANCES</string>
+    <string name="citycentre">CITY CENTRE</string>
+    <string name="airport">AIRPORT</string>
+    <string name="railway">RAILWAY STATION</string>
 
 </resources>
