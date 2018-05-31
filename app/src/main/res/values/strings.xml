@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">nestApp</string>
-    <string name="dev" translatable="false">DEVELOPER</string>
-    <string name="floor" translatable="false">FLOOR</string>
-    <string name="area" translatable="false">AREA</string>
-    <string name="rooms" translatable="false">ROOMS</string>
+    <string name="dev" >DEVELOPER</string>
+    <string name="floor" >FLOOR</string>
+    <string name="area" >AREA</string>
+    <string name="rooms" >ROOMS</string>
+    <string name="askOffer">ASK FOR OFFER</string>
+    <string name="balcony">BALCONY</string>
+    <string name="garage">GARAGE</string>
+    <string name="greenarea">GREEN AREA</string>
+    <string name="equip">OPTIONAL EQUIPMENT</string>
 
 </resources>

@@ -11,9 +11,10 @@ public class Flat {
     double area;
     int rooms;
     int floor;
-    //Boolean balcony
-    //Boolean equip
-    //Boolean parking
+    int balcony;
+    int equip;
+    int parking;
+    int garden;
     //int cityDistance
     //railway distance
     //Boolean busStop
@@ -21,16 +22,20 @@ public class Flat {
 
     public Flat(){}
 
-    public Flat(String name,String address,String dev,double area, int rooms, int floor, String minUrl,String maxUrl){
+    public Flat(String name,String address,String dev,double area, int rooms, int floor, int balcony, int parking,
+                int equip,int garden, String minUrl,String maxUrl){
         this.name=name;
         this.address=address;
         this.dev=dev;
-        this.minUrl=minUrl;
-        this.maxUrl=maxUrl;
         this.area=area;
         this.rooms=rooms;
         this.floor=floor;
-
+        this.balcony=balcony;
+        this.parking=parking;
+        this.equip=equip;
+        this.garden=garden;
+        this.minUrl=minUrl;
+        this.maxUrl=maxUrl;
     }
 
     //GETTERS
@@ -62,6 +67,15 @@ public class Flat {
     public int getRooms() { return rooms; }
 
     public int getFloor() { return floor; }
+
+    public int getBalcony() { return balcony; }
+
+    public int getEquip() { return equip; }
+
+    public int getParking() { return parking; }
+
+    public int getGarden() { return garden; }
+
     //SETTERS
 
     public void setId(long id) {
@@ -91,4 +105,13 @@ public class Flat {
     public void setFloor(int floor) { this.floor = floor; }
 
     public void setMaxUrl(String maxUrl) { this.maxUrl = maxUrl; }
+
+    public void setBalcony(int balcony) { this.balcony = balcony;
+    }
+
+    public void setEquip(int equip) { this.equip = equip; }
+
+    public void setParking(int parking) { this.parking = parking; }
+
+    public void setGarden(int garden) { this.garden = garden; }
 }

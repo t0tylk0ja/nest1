@@ -77,6 +77,10 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
             intent.putExtra("maxUrl",mFlat.getMaxUrl());
             intent.putExtra("address",mFlat.getAddress());
             intent.putExtra("dev",mFlat.getDev());
+            intent.putExtra("balcony",mFlat.getBalcony());
+            intent.putExtra("parking",mFlat.getParking());
+            intent.putExtra("equip",mFlat.getEquip());
+            intent.putExtra("garden",mFlat.getGarden());
         }
     }
 

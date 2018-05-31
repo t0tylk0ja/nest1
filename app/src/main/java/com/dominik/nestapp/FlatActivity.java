@@ -72,7 +72,37 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         tvArea.setText(String.valueOf(extras.getDouble("area"))+"m\u00B2");
         tvRooms.setText(String.valueOf(extras.getInt("rooms")));
         tvFloor.setText(String.valueOf(extras.getInt("floor")));
-        //mapa
+
+//additional info
+        ImageView balconyView = (ImageView)findViewById(R.id.balconyView);
+        String balconyIcon = extras.getInt("balcony") == 1 ? "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fbalcony_yes.png?alt=media&token=4111be0a-daaa-4cf6-91ef-3fc59475ae3a" : "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fbalcony_no.png?alt=media&token=8f16d18c-fdbb-44c2-86f7-86679b17efeb";
+        Glide
+                .with(this)
+                .load(balconyIcon)
+                .into(balconyView);
+
+        ImageView parkingView = (ImageView)findViewById(R.id.parkingView);
+        String parkingIcon = extras.getInt("parking") == 1 ? "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fcar_yes.png?alt=media&token=7851d496-cf4f-4028-ad7b-034c266431ce" : "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fcar_no.png?alt=media&token=f40cae3b-a6da-43f4-aa97-168bfabe5144";
+        Glide
+                .with(this)
+                .load(parkingIcon)
+                .into(parkingView);
+
+        ImageView equipView = (ImageView)findViewById(R.id.equipView);
+        String equipIcon = extras.getInt("equip") == 1 ? "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fequip_yes.png?alt=media&token=8de79ae5-1fc7-4fbf-9a68-851852fd7986" : "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fequip_no.png?alt=media&token=c3565eb0-1ceb-4df1-9162-27c2daac7886";
+        Glide
+                .with(this)
+                .load(equipIcon)
+                .into(equipView);
+
+        ImageView gardenView = (ImageView)findViewById(R.id.gardenView);
+        String gardenIcon = extras.getInt("garden") == 1 ? "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fgarden_yes.png?alt=media&token=7124ca76-fd77-43ef-b7d4-0924f41abc73" : "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fgarden_no.png?alt=media&token=bef23ff9-9677-4f63-bef1-8fb700b9a836";
+        Glide
+                .with(this)
+                .load(gardenIcon)
+                .into(gardenView);
+
+//mapa
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
             mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
@@ -81,6 +111,7 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(mapViewBundle);
         mapView.getMapAsync(this);
+
     }
 
     @Override
