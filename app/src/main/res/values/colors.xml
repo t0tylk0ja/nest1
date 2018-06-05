@@ -10,4 +10,6 @@
     <color name="text_shadow_white">#FFFFFF</color>
 
     <color name="field_color">#EFEFEF</color>
+    <color name="myGray">#252525</color>
+    <color name="myPink">#DA5F71</color>
 </resources>

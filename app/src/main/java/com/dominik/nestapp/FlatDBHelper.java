@@ -179,16 +179,42 @@ public static FlatDBHelper getInstanse(Context ctx){
     }
 
     public void addSomeFlats(){
-        saveNewFlat("Alabama"," Wrocław, Krawiecka 1","ATAL",45.5,3.0, 3,2,1,0,1,0,
+        saveNewFlat("Nowe Żerniki","Wrocław, Nowe Żerniki","ATAL",45.5,3.0, 3,2,1,0,1,0,
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FAlabama.jpg?alt=media&token=6c70f9ff-097d-4605-b5f5-27a1f016fec4",
-                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2FAlabama_max.jpg?alt=media&token=cd91735f-ec08-4785-a349-897f93d1019f");
-        saveNewFlat("Chicago"," Wrocław, Pilczycka 101","MURAPOL",25.0,5.0, 1,3,0,1,0,1,
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F1jpg.jpg?alt=media&token=2885d38b-431e-4597-ac04-e3f60a61ed18");
+        saveNewFlat("Nowe Miasto Różanka","Wrocław, Obornicka","ATAL",25.0,5.0, 1,3,0,1,0,1,
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FChicago.jpg?alt=media&token=565aa1e4-961d-4092-8af6-eb5ee6742a00",
-                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2FChicago_max.jpg?alt=media&token=40896244-d922-451e-acb7-e2c1bccafd7a");
-        saveNewFlat("Miami","Wrocław, Grunwaldzka 98","ATAL",37.0,2.0,2,0,1,1,1,1,
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F2.jpg?alt=media&token=b71bf834-0285-4e8c-b647-83dad698ecf4");
+        saveNewFlat("Krakowska 37","Wrocław, Krakowska 37","ATAL",37.0,2.0,2,0,1,1,1,1,
                 "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
-                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2FMiami_max.jpg?alt=media&token=03f5f1b5-2c3e-42ee-9903-2d872443a732");
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F3.jpg?alt=media&token=9acfe027-379b-4522-893c-cb8275cb93a6");
 
+        saveNewFlat("Browary Wrocławskie","Wrocław, Jedności Narodowej","ARCHICOM",57.0,2.0,2,0,1,1,1,1,
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F1jpg.jpg?alt=media&token=2885d38b-431e-4597-ac04-e3f60a61ed18");
+        saveNewFlat("Olimpia Port","Wrocław, Ferdynanda Magellana","ARCHICOM",35.5,1.0,1,2,0,1,0,1,
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F2.jpg?alt=media&token=b71bf834-0285-4e8c-b647-83dad698ecf4");
+        saveNewFlat("River Point","Wrocław, Mieszczańska","ARCHICOM",45.5,2.5,2,0,1,1,1,1,
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F3.jpg?alt=media&token=9acfe027-379b-4522-893c-cb8275cb93a6");
+
+        saveNewFlat("Apartamenty Klasztorna","Wrocław, Klasztorna","MURAPOL",27.0,1.0,1,1,0,1,1,1,
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F1jpg.jpg?alt=media&token=2885d38b-431e-4597-ac04-e3f60a61ed18");
+        saveNewFlat("Nowa Toskania","Wrocław, Buforowa","MURAPOL",40.0,1.0,2,3,1,1,1,1,
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F2.jpg?alt=media&token=b71bf834-0285-4e8c-b647-83dad698ecf4");
+        saveNewFlat("Promenady Wrocławskie","Wrocław, Zakładowa","VANTAGE",35.5,1.0,1,5,0,1,0,1,
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F3.jpg?alt=media&token=9acfe027-379b-4522-893c-cb8275cb93a6");
+
+        saveNewFlat("Dorzecze Legnickiej","Wrocław, Małopanewska","VANTAGE",37.0,2.0,1,4,0,1,1,0,
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F2.jpg?alt=media&token=b71bf834-0285-4e8c-b647-83dad698ecf4");
+        saveNewFlat("LogIn City","Wrocław, Grabiszyńska","VANTAGE",61.0,5.0,2,4,1,1,1,1,
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/small%2FMiami.jpg?alt=media&token=4f9fe693-160f-4684-9088-0ac077878492",
+                "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/big%2F3.jpg?alt=media&token=9acfe027-379b-4522-893c-cb8275cb93a6");
     }
 
 

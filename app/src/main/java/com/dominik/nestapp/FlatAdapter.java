@@ -39,6 +39,7 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
         public TextView flatNameTxtV;
         public TextView flatAddressTxtV;
         public TextView flatDevTxtV;
+        public TextView flatAreaTxtV;
         public ImageView flatImage;
         Flat mFlat;
 
@@ -49,14 +50,16 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
             flatNameTxtV = (TextView) itemView.findViewById(R.id.name);
             flatAddressTxtV = (TextView) itemView.findViewById(R.id.address);
             flatDevTxtV = (TextView) itemView.findViewById(R.id.dev);
+            flatAreaTxtV = (TextView) itemView.findViewById(R.id.area);
             flatImage = (ImageView) itemView.findViewById(R.id.image);
         }
 
         public void bind(Flat flat) {
             mFlat = flat;
-            flatNameTxtV.setText("Name: " + flat.getName());
-            flatAddressTxtV.setText("Address: " + flat.getAddress());
-            flatDevTxtV.setText("Dev: " + flat.getDev());
+            flatNameTxtV.setText(flat.getName());
+            flatAddressTxtV.setText(flat.getAddress());
+            flatDevTxtV.setText(flat.getDev());
+            flatAreaTxtV.setText(String.valueOf(flat.getArea())+"m\u00B2");
 
         }
 
