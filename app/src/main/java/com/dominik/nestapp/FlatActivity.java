@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.location.Geocoder;
 import android.location.Address;
 import android.location.Location;
+import android.support.v4.widget.CircularProgressDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -59,6 +61,8 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         Glide
                 .with(this)
                 .load(maxUrl)
+                .apply(new RequestOptions()
+                .placeholder(R.drawable.ic_launcher_foreground))
                 .into(imageView1);
 //dev info
         devList=new DevList().returnDevList();

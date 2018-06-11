@@ -1,11 +1,17 @@
 package com.dominik.nestapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //initialize the variables
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -31,7 +36,36 @@ public class MainActivity extends AppCompatActivity {
         //populate recyclerview
         populateRecyclerView(filter);
 
+        final Spinner opsSpin = (Spinner) findViewById(R.id.operation);
+        boolean nameAsc=true;
+        boolean areaAsc=true;
 
+        Button sortButton = (Button) findViewById(R.id.sortButton);
+        sortButton.setOnClickListener(new View.OnClickListener() {
+            boolean nameAsc=false;
+            boolean areaAsc=false;
+            @Override
+            public void onClick(View v) {
+              if(opsSpin.getSelectedItemPosition()==1) {
+                  if(!nameAsc){
+                      filter="name asc";
+                      nameAsc=true;
+                  }else{
+                      filter="name desc";
+                      nameAsc=false;
+                  }
+              }else if(opsSpin.getSelectedItemPosition()==2){
+                  if(!areaAsc){
+                      filter="area asc";
+                      areaAsc=true;
+                  }else{
+                      filter="area desc";
+                      areaAsc=false;
+                  }
+              }
+                populateRecyclerView(filter);
+            }
+        });
     }
 
     private void populateRecyclerView(String filter){

@@ -14,5 +14,13 @@
     <string name="citycentre">CITY CENTRE</string>
     <string name="airport">AIRPORT</string>
     <string name="railway">RAILWAY STATION</string>
+    <string name="sort">SORT</string>
+
+    <string-array name="filter_ops">
+        <item>Filter...</item>
+        <item>BY NAME</item>
+        <item>BY AREA</item>
+
+    </string-array>
 
 </resources>
