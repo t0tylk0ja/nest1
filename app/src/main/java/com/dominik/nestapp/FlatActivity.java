@@ -7,6 +7,7 @@ import android.location.Address;
 import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -66,10 +67,7 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         ImageView tvDevLogo = (ImageView) findViewById(R.id.devLogo);
         tvDevName.setText(devToShow.getDevName());
 
-        Glide
-                .with(this)
-                .load(devToShow.getDevLogo())
-                .into(tvDevLogo);
+        tvDevLogo.setImageResource(devToShow.getDevLogo());
 
 //flat info
         TextView tvArea=(TextView) findViewById(R.id.flatArea);
@@ -84,52 +82,37 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 //additional info
         ImageView balconyView = (ImageView)findViewById(R.id.balconyView);
-        String balconyIcon = extras.getInt("balcony") == 1 ? "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fbalcony_yes.png?alt=media&token=4111be0a-daaa-4cf6-91ef-3fc59475ae3a" : "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fbalcony_no.png?alt=media&token=8f16d18c-fdbb-44c2-86f7-86679b17efeb";
-        Glide
-                .with(this)
-                .load(balconyIcon)
-                .into(balconyView);
+
+        if(extras.getInt("balcony")==1){
+            balconyView.setImageDrawable(getDrawable(R.drawable.balcony_yes));
+        }else{balconyView.setImageDrawable(getDrawable(R.drawable.balcony_no));}
 
         ImageView parkingView = (ImageView)findViewById(R.id.parkingView);
-        String parkingIcon = extras.getInt("parking") == 1 ? "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fcar_yes.png?alt=media&token=7851d496-cf4f-4028-ad7b-034c266431ce" : "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fcar_no.png?alt=media&token=f40cae3b-a6da-43f4-aa97-168bfabe5144";
-        Glide
-                .with(this)
-                .load(parkingIcon)
-                .into(parkingView);
+
+        if(extras.getInt("parking")==1){
+            parkingView.setImageDrawable(getDrawable(R.drawable.car_yes));
+        }else{parkingView.setImageDrawable(getDrawable(R.drawable.car_no));}
 
         ImageView equipView = (ImageView)findViewById(R.id.equipView);
-        String equipIcon = extras.getInt("equip") == 1 ? "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fequip_yes.png?alt=media&token=8de79ae5-1fc7-4fbf-9a68-851852fd7986" : "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fequip_no.png?alt=media&token=c3565eb0-1ceb-4df1-9162-27c2daac7886";
-        Glide
-                .with(this)
-                .load(equipIcon)
-                .into(equipView);
+
+        if(extras.getInt("equip")==1){
+           equipView.setImageDrawable(getDrawable(R.drawable.equip_yes));
+        }else{equipView.setImageDrawable(getDrawable(R.drawable.equip_no));}
 
         ImageView gardenView = (ImageView)findViewById(R.id.gardenView);
-        String gardenIcon = extras.getInt("garden") == 1 ? "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fgarden_yes.png?alt=media&token=7124ca76-fd77-43ef-b7d4-0924f41abc73" : "https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fgarden_no.png?alt=media&token=bef23ff9-9677-4f63-bef1-8fb700b9a836";
-        Glide
-                .with(this)
-                .load(gardenIcon)
-                .into(gardenView);
+
+        if(extras.getInt("garden")==1){
+            gardenView.setImageDrawable(getDrawable(R.drawable.garden_yes));
+        }else{gardenView.setImageDrawable(getDrawable(R.drawable.garden_no));}
 //distances
         setDistances();
         ImageView centreView = (ImageView) findViewById(R.id.centreView);
+        centreView.setImageDrawable(getDrawable(R.drawable.centre));
         ImageView railwayView = (ImageView) findViewById(R.id.airportView);
+        railwayView.setImageDrawable(getDrawable(R.drawable.train));
         ImageView airportView = (ImageView) findViewById(R.id.railwayView);
+        airportView.setImageDrawable(getDrawable(R.drawable.plane));
 
-        Glide
-                .with(this)
-                .load("https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fcentre.png?alt=media&token=763b47d8-a953-485c-b979-c7b2edacbc32")
-                .into(centreView);
-
-        Glide
-                .with(this)
-                .load("https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Ftrain.png?alt=media&token=2d591ee8-b9dc-4ae0-80a4-9493452a4859")
-                .into(airportView);
-
-        Glide
-                .with(this)
-                .load("https://firebasestorage.googleapis.com/v0/b/nest1-e6f6b.appspot.com/o/icons%2Fplane.png?alt=media&token=3f8a8329-46e8-483b-84c6-4c9f1c11afb6")
-                .into(railwayView);
 
 
 //mapa

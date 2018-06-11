@@ -1,24 +1,29 @@
 package com.dominik.nestapp;
 
+import android.graphics.drawable.Drawable;
+
 public class Dev {
-    public String devLogo;
+    public int devLogo;
     public String devName;
     public String devEmail;
     public String devAddress;
 
-    public Dev(String devLogo, String devName, String devEmail, String devAddress) {
-        this.devLogo = devLogo;
+
+    public Dev(String devName, String devEmail, String devAddress, int devLogo) {
         this.devName = devName;
         this.devEmail = devEmail;
         this.devAddress = devAddress;
+        this.devLogo=devLogo;
     }
 
-    public String getDevLogo() {
+
+
+    public int getDevLogo() {
         return devLogo;
     }
 
-    public void setDevLogo(String devLogo) {
-        this.devLogo = devLogo;
+    public void setDevLogo(int devLogo) {
+        this.devLogo=devLogo;
     }
 
     public String getDevName() {
