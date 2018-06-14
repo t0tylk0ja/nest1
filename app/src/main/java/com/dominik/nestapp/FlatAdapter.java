@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filterable;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,11 +23,13 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
+public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> implements Filterable {
     private List<Flat> mFlatList;
+    private List<Flat> mFlatListFiltered;
     private Context mContext;
     private RecyclerView mRecyclerV;
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -91,8 +95,9 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
     // Provide a suitable constructor (depends on the kind of dataset)
     public FlatAdapter(List<Flat> myDataset, Context context, RecyclerView recyclerView) {
         mFlatList = myDataset;
-        mContext = context;
+        mFlatListFiltered=myDataset;
         mRecyclerV = recyclerView;
+        mContext=context;
         setHasStableIds(true);
     }
 
@@ -110,7 +115,7 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
 
-        Flat flat = mFlatList.get(position);
+        Flat flat = mFlatListFiltered.get(position);
         holder.bind(flat);
         String minUrl=flat.getMinUrl();
 
@@ -126,7 +131,7 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mFlatList.size();
+        return mFlatListFiltered.size();
     }
 
     @Override
@@ -137,6 +142,42 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> {
     @Override
     public int getItemViewType(int position) {
         return position;
+    }
+
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                    String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    mFlatListFiltered=mFlatList;
+                } else {
+                    List<Flat> filteredList = new ArrayList<>();
+                    for (Flat row : mFlatList) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.getName().toLowerCase().contains(charString.toLowerCase()) || row.getDev().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    mFlatListFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = mFlatListFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                mFlatListFiltered= (List<Flat>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
 }
