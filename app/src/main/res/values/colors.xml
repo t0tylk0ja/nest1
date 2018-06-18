@@ -11,5 +11,6 @@
 
     <color name="field_color">#EFEFEF</color>
     <color name="myGray">#252525</color>
-    <color name="myPink">#DA5F71</color>
+    <color name="myPink">#5b247a</color>
+    <color name="myBlue">#0098a6</color>
 </resources>
