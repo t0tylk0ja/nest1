@@ -8,11 +8,14 @@ import android.location.Location;
 import android.support.v4.widget.CircularProgressDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -128,7 +131,24 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(mapViewBundle);
         mapView.getMapAsync(this);
+//intencja mail
+        Button offerButton = (Button) findViewById(R.id.offerButton);
 
+        offerButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("message/rfc822");
+                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{devToShow.getDevEmail()});
+                i.putExtra(Intent.EXTRA_SUBJECT, "Flat enquiry: "+extras.getString("name")+" /"+String.valueOf(extras.getDouble("area"))+"m\u00B2");
+                try {
+                    startActivity(Intent.createChooser(i, "Send mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(FlatActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        });
     }
 
     public void setDistances(){

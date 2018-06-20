@@ -9,7 +9,6 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         >
 
         <!-- everything you already have -->
@@ -49,8 +48,8 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
             android:background="@color/field_color"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,9 +104,9 @@
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="210dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             android:background="@color/field_color"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -236,9 +235,9 @@
             android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="210dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             android:background="@color/field_color"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -359,9 +358,9 @@
             android:id="@+id/mapView"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
@@ -370,9 +369,9 @@
             android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             android:background="@color/field_color"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -487,14 +486,15 @@
             </LinearLayout>
         </LinearLayout>
         <Button
+            android:id="@+id/offerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/askOffer"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
             android:background="@color/field_color"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"/>
 
     </android.support.constraint.ConstraintLayout>
 

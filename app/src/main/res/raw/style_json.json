@@ -78,14 +78,6 @@
   },
   {
     "featureType": "road",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
     "elementType": "geometry",
     "stylers": [
       {
@@ -161,10 +153,7 @@
     "elementType": "geometry.fill",
     "stylers": [
       {
-        "color": "#ff8080"
-      },
-      {
-        "visibility": "on"
+        "color": "#0098a6"
       }
     ]
   },
