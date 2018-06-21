@@ -38,6 +38,9 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
     Bundle extras;
     HashMap<String,Dev> devList;
     Dev devToShow;
+    Flat flatToShow;
+    private List<Flat> mFlatList;
+    private FlatDBHelper dbHelper;
     TextView tvCentre;
     TextView tvAirport;
     TextView tvRailway;
@@ -58,14 +61,22 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         TextView tv1=(TextView) findViewById(R.id.textView);
         tv1.setText(extras.getString("name"));
 
+        dbHelper = FlatDBHelper.getInstanse(this);
+        mFlatList=dbHelper.flatList("");
+
+        String name =extras.getString("name");
+        for(Flat x:mFlatList){
+            if(x.getName().equals(name)){
+                flatToShow=x;
+            }
+        }
+
         ImageView imageView1 = (ImageView) findViewById(R.id.imageView);
-        String maxUrl = extras.getString("maxUrl");
+        String maxUrl = flatToShow.getMaxUrl();
 
         Glide
                 .with(this)
                 .load(maxUrl)
-                .apply(new RequestOptions()
-                .placeholder(R.drawable.ic_launcher_foreground))
                 .into(imageView1);
 //dev info
         devList=new DevList().returnDevList();
@@ -82,42 +93,42 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         TextView tvFloor=(TextView) findViewById(R.id.flatFloor);
         TextView tvStorage=(TextView) findViewById(R.id.flatStorage);
 
-        tvArea.setText(String.valueOf(extras.getDouble("area"))+"m\u00B2");
-        tvStorage.setText(String.valueOf(extras.getDouble("storage"))+"m\u00B2");
-        tvRooms.setText(String.valueOf(extras.getInt("rooms")));
-        tvFloor.setText(String.valueOf(extras.getInt("floor")));
+        tvArea.setText(String.valueOf(flatToShow.getArea())+"m\u00B2");
+        tvStorage.setText(String.valueOf(flatToShow.getStorage())+"m\u00B2");
+        tvRooms.setText(String.valueOf(flatToShow.getRooms()));
+        tvFloor.setText(String.valueOf(flatToShow.getFloor()));
 
 //additional info
         ImageView balconyView = (ImageView)findViewById(R.id.balconyView);
 
-        if(extras.getInt("balcony")==1){
+        if(flatToShow.getBalcony()==1){
             balconyView.setImageDrawable(getDrawable(R.drawable.balcony_yes));
         }else{balconyView.setImageDrawable(getDrawable(R.drawable.balcony_no));}
 
         ImageView parkingView = (ImageView)findViewById(R.id.parkingView);
 
-        if(extras.getInt("parking")==1){
+        if(flatToShow.getParking()==1){
             parkingView.setImageDrawable(getDrawable(R.drawable.car_yes));
         }else{parkingView.setImageDrawable(getDrawable(R.drawable.car_no));}
 
         ImageView equipView = (ImageView)findViewById(R.id.equipView);
 
-        if(extras.getInt("equip")==1){
+        if(flatToShow.getEquip()==1){
            equipView.setImageDrawable(getDrawable(R.drawable.equip_yes));
         }else{equipView.setImageDrawable(getDrawable(R.drawable.equip_no));}
 
         ImageView gardenView = (ImageView)findViewById(R.id.gardenView);
 
-        if(extras.getInt("garden")==1){
+        if(flatToShow.getGarden()==1){
             gardenView.setImageDrawable(getDrawable(R.drawable.garden_yes));
         }else{gardenView.setImageDrawable(getDrawable(R.drawable.garden_no));}
 //distances
         setDistances();
         ImageView centreView = (ImageView) findViewById(R.id.centreView);
         centreView.setImageDrawable(getDrawable(R.drawable.centre));
-        ImageView railwayView = (ImageView) findViewById(R.id.airportView);
+        ImageView railwayView = (ImageView) findViewById(R.id.railwayView);
         railwayView.setImageDrawable(getDrawable(R.drawable.train));
-        ImageView airportView = (ImageView) findViewById(R.id.railwayView);
+        ImageView airportView = (ImageView) findViewById(R.id.airportView);
         airportView.setImageDrawable(getDrawable(R.drawable.plane));
 
 
@@ -140,12 +151,24 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("message/rfc822");
                 i.putExtra(Intent.EXTRA_EMAIL  , new String[]{devToShow.getDevEmail()});
-                i.putExtra(Intent.EXTRA_SUBJECT, "Flat enquiry: "+extras.getString("name")+" /"+String.valueOf(extras.getDouble("area"))+"m\u00B2");
+                i.putExtra(Intent.EXTRA_SUBJECT, "Flat enquiry: "+flatToShow.getName()+" /"+flatToShow.getArea()+"m\u00B2");
                 try {
                     startActivity(Intent.createChooser(i, "Send mail..."));
                 } catch (android.content.ActivityNotFoundException ex) {
                     Toast.makeText(FlatActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
                 }
+            }
+
+        });
+//galeria
+        Button galleryButton = (Button) findViewById(R.id.galleryButton);
+        galleryButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Context viewContext= view.getContext();
+                Intent intent = new Intent(viewContext, GalleryActivity.class);
+                intent.putExtra("flatName",flatToShow.getName());
+                startActivity(intent);
             }
 
         });
@@ -169,7 +192,7 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
         Location flatLocation=new Location("flatLocation");
-        Address flatAddress=getAddress(this,extras.getString("address"));
+        Address flatAddress=getAddress(this,flatToShow.getAddress());
         flatLocation.setLatitude(flatAddress.getLatitude());
         flatLocation.setLongitude(flatAddress.getLongitude());
 
@@ -233,7 +256,7 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         gmap = googleMap;
-        gmap.setMinZoomPreference(12);
+        gmap.setMinZoomPreference(14);
         gmap.setIndoorEnabled(true);
         gmap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this,R.raw.style_json));
         UiSettings uiSettings = gmap.getUiSettings();
@@ -242,7 +265,7 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         uiSettings.setMapToolbarEnabled(true);
         uiSettings.setCompassEnabled(true);
         uiSettings.setZoomControlsEnabled(true);
-        LatLng LL = getLocationFromAddress(this,extras.getString("address"));
+        LatLng LL = getLocationFromAddress(this,flatToShow.getAddress());
 
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(LL);

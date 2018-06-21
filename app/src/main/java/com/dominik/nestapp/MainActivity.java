@@ -3,17 +3,26 @@ package com.dominik.nestapp;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import android.support.v7.widget.SearchView;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +39,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initialize the variables
+        TextView tv = new TextView(getApplicationContext());
+        tv.setText("nest");
+        tv.setTextColor(Color.parseColor("#FFFFFF"));
+        tv.setTextSize(26);
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Pacifico.ttf");
+        tv.setTypeface(type);
+        GradientDrawable gradient = new GradientDrawable();
+        gradient.setColors(new int[]{
+                Color.parseColor("#4a81ac"),
+                Color.parseColor("#31507d"),
+                Color.parseColor("#5b247a"),
+        });
+        gradient.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradient.setShape(GradientDrawable.RECTANGLE);
+        gradient.setOrientation(GradientDrawable.Orientation.BL_TR);
+        //gradient.setStroke(2, Color.parseColor("#0098a6"));
+        gradient.setAlpha(200);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(tv);
+        getSupportActionBar().setBackgroundDrawable(gradient);
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         // use a linear layout manager

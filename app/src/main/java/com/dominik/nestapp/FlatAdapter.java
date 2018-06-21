@@ -78,17 +78,17 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> im
 
         public void putContent(Intent intent){
             intent.putExtra("name", mFlat.getName());
-            intent.putExtra("area", mFlat.getArea());
-            intent.putExtra("storage", mFlat.getStorage());
-            intent.putExtra("rooms",mFlat.getRooms());
-            intent.putExtra("floor",mFlat.getFloor());
-            intent.putExtra("maxUrl",mFlat.getMaxUrl());
-            intent.putExtra("address",mFlat.getAddress());
+//            intent.putExtra("area", mFlat.getArea());
+//            intent.putExtra("storage", mFlat.getStorage());
+//            intent.putExtra("rooms",mFlat.getRooms());
+//            intent.putExtra("floor",mFlat.getFloor());
+//            intent.putExtra("maxUrl",mFlat.getMaxUrl());
+//            intent.putExtra("address",mFlat.getAddress());
             intent.putExtra("dev",mFlat.getDev());
-            intent.putExtra("balcony",mFlat.getBalcony());
-            intent.putExtra("parking",mFlat.getParking());
-            intent.putExtra("equip",mFlat.getEquip());
-            intent.putExtra("garden",mFlat.getGarden());
+//            intent.putExtra("balcony",mFlat.getBalcony());
+//            intent.putExtra("parking",mFlat.getParking());
+//            intent.putExtra("equip",mFlat.getEquip());
+//            intent.putExtra("garden",mFlat.getGarden());
         }
     }
 

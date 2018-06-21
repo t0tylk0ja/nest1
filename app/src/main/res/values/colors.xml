@@ -13,4 +13,6 @@
     <color name="myGray">#252525</color>
     <color name="myPink">#5b247a</color>
     <color name="myBlue">#0098a6</color>
+    <color name="myWhite">#ffffff</color>
+    <color name="myBlue2">#31507d</color>
 </resources>

@@ -8,6 +8,9 @@ public class Flat {
     private String dev;
     private String minUrl;
     private String maxUrl;
+    private String planUrl;
+    private String galleryUrl;
+    private String galleryUrl2;
     double area;
     double storage;
     int rooms;
@@ -21,7 +24,7 @@ public class Flat {
     public Flat(){}
 
     public Flat(String name,String address,String dev,double area,double storage, int rooms, int floor, int balcony, int parking,
-                int equip,int garden, String minUrl,String maxUrl){
+                int equip,int garden, String minUrl,String maxUrl, String planUrl, String galleryUrl, String galleryUrl2){
         this.name=name;
         this.address=address;
         this.dev=dev;
@@ -35,6 +38,9 @@ public class Flat {
         this.garden=garden;
         this.minUrl=minUrl;
         this.maxUrl=maxUrl;
+        this.planUrl=planUrl;
+        this.galleryUrl=galleryUrl;
+        this.galleryUrl2=galleryUrl2;
     }
 
     //GETTERS
@@ -61,6 +67,10 @@ public class Flat {
 
     public String getMaxUrl() { return maxUrl; }
 
+    public String getPlanUrl() { return planUrl; }
+
+    public String getGalleryUrl() { return galleryUrl; }
+
     public double getArea() { return area; }
 
     public int getRooms() { return rooms; }
@@ -76,6 +86,8 @@ public class Flat {
     public int getGarden() { return garden; }
 
     public double getStorage() { return storage; }
+
+    public String getGalleryUrl2() { return galleryUrl2; }
 
     //SETTERS
 
@@ -99,6 +111,12 @@ public class Flat {
         this.minUrl = minUrl;
     }
 
+    public void setPlanUrl(String planUrl) { this.planUrl = planUrl; }
+
+    public void setGalleryUrl(String galleryUrl) { this.galleryUrl = galleryUrl; }
+
+    public void setGalleryUrl2(String galleryUrl2) { this.galleryUrl2 = galleryUrl2; }
+
     public void setArea(double area) { this.area = area; }
 
     public void setRooms(int rooms) { this.rooms = rooms; }
@@ -107,8 +125,7 @@ public class Flat {
 
     public void setMaxUrl(String maxUrl) { this.maxUrl = maxUrl; }
 
-    public void setBalcony(int balcony) { this.balcony = balcony;
-    }
+    public void setBalcony(int balcony) { this.balcony = balcony; }
 
     public void setEquip(int equip) { this.equip = equip; }
 
@@ -117,4 +134,6 @@ public class Flat {
     public void setGarden(int garden) { this.garden = garden; }
 
     public void setStorage(double storage) { this.storage = storage; }
+
+
 }
