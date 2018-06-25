@@ -26,6 +26,7 @@
     <string name="add">Finishing and accessories</string>
     <string name="love">Look at your favourites</string>
     <string name="browse">Search for a flat</string>
+    <string name="logout">Log out</string>
 
     <string-array name="filter_ops">
         <item>Filter...</item>

@@ -5,5 +5,7 @@
         <item>@font/lato_bold</item>
         <item>@font/lato_light</item>
         <item>@font/pacifico</item>
+        <item>@font/roboto</item>
+        <item>@font/roboto_bold</item>
     </array>
 </resources>

@@ -120,7 +120,7 @@ public static FlatDBHelper getInstanse(Context ctx){
             query = "SELECT  * FROM " + TABLE_NAME + " ORDER BY "+ filter;
         }
 
-        List<Flat> flatLinkedList = new LinkedList<>();
+        List<Flat> flatLinkedList = new LinkedList<Flat>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Flat flat;

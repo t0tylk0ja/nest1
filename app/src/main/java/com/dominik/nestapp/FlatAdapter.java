@@ -154,7 +154,7 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> im
                 if (charString.isEmpty()) {
                     mFlatListFiltered=mFlatList;
                 } else {
-                    List<Flat> filteredList = new ArrayList<>();
+                    List<Flat> filteredList = new ArrayList<Flat>();
                     for (Flat row : mFlatList) {
 
                         // name match condition. this might differ depending on your requirement

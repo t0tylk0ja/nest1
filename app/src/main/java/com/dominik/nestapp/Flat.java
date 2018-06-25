@@ -19,12 +19,13 @@ public class Flat {
     int equip;
     int parking;
     int garden;
+    int loved;
 
 
     public Flat(){}
 
     public Flat(String name,String address,String dev,double area,double storage, int rooms, int floor, int balcony, int parking,
-                int equip,int garden, String minUrl,String maxUrl, String planUrl, String galleryUrl, String galleryUrl2){
+                int equip,int garden,int loved, String minUrl,String maxUrl, String planUrl, String galleryUrl, String galleryUrl2){
         this.name=name;
         this.address=address;
         this.dev=dev;
@@ -41,6 +42,7 @@ public class Flat {
         this.planUrl=planUrl;
         this.galleryUrl=galleryUrl;
         this.galleryUrl2=galleryUrl2;
+        this.loved=loved;
     }
 
     //GETTERS
@@ -89,6 +91,8 @@ public class Flat {
 
     public String getGalleryUrl2() { return galleryUrl2; }
 
+    public int getLoved() { return loved; }
+
     //SETTERS
 
     public void setId(long id) {
@@ -135,5 +139,5 @@ public class Flat {
 
     public void setStorage(double storage) { this.storage = storage; }
 
-
+    public void setLoved(int loved) { this.loved = loved; }
 }
