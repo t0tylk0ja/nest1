@@ -23,6 +23,9 @@
     <string name="flat_plan">Flat plan</string>
     <string name="external_view">External view</string>
     <string name="entrance_zone">Entrance zone</string>
+    <string name="add">Finishing and accessories</string>
+    <string name="love">Look at your favourites</string>
+    <string name="browse">Search for a flat</string>
 
     <string-array name="filter_ops">
         <item>Filter...</item>

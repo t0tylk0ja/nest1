@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -25,8 +25,9 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".FlatActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".FlatActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -44,7 +45,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GalleryActivity"
+        <activity
+            android:name=".GalleryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MenuActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

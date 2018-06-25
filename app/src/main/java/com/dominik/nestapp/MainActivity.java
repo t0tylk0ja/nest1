@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         tv.setTypeface(type);
         GradientDrawable gradient = new GradientDrawable();
         gradient.setColors(new int[]{
-                Color.parseColor("#4a81ac"),
+                Color.parseColor("#5574ac"),
                 Color.parseColor("#31507d"),
                 Color.parseColor("#5b247a"),
         });
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         gradient.setShape(GradientDrawable.RECTANGLE);
         gradient.setOrientation(GradientDrawable.Orientation.BL_TR);
         //gradient.setStroke(2, Color.parseColor("#0098a6"));
-        gradient.setAlpha(200);
+        gradient.setAlpha(255);
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(tv);
