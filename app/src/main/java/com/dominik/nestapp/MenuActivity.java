@@ -61,5 +61,16 @@ public class MenuActivity extends AppCompatActivity {
             }
 
         });
+
+        RelativeLayout loveLayout = (RelativeLayout) findViewById(R.id.love);
+        loveLayout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Context viewContext= view.getContext();
+                Intent intent = new Intent(viewContext, LovedActivity.class);
+                startActivity(intent);
+            }
+
+        });
     }
 }

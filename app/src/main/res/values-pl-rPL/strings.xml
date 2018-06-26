@@ -2,8 +2,5 @@
 <resources>
     <string name="app_name">nestApp</string>
     <string name="dev" >DEWELOPER</string>
-    <string name="floor" >PIĘTRO</string>
-    <string name="area" >POWIERZCHNIA</string>
-    <string name="rooms" >LICZBA POKOI</string>
-    <string name="askOffer">ZAPYTAJ O OFERTĘ</string>
+
 </resources>

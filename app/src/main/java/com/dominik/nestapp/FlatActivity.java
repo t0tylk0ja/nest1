@@ -98,6 +98,10 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         tvRooms.setText(String.valueOf(flatToShow.getRooms()));
         tvFloor.setText(String.valueOf(flatToShow.getFloor()));
 
+        ImageView heartImageView = (ImageView) findViewById(R.id.heartView);
+        if(flatToShow.getLoved()==0){
+            heartImageView.setVisibility(View.INVISIBLE);
+        }
 //additional info
         ImageView balconyView = (ImageView)findViewById(R.id.balconyView);
 

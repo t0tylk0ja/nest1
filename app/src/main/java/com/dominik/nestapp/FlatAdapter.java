@@ -45,6 +45,7 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> im
         public TextView flatDevTxtV;
         public TextView flatAreaTxtV;
         public ImageView flatImage;
+        public ImageView heartImage;
         Flat mFlat;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
@@ -56,6 +57,7 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> im
             flatDevTxtV = (TextView) itemView.findViewById(R.id.dev);
             flatAreaTxtV = (TextView) itemView.findViewById(R.id.area);
             flatImage = (ImageView) itemView.findViewById(R.id.image);
+            heartImage = (ImageView) itemView.findViewById(R.id.heart);
         }
 
         public void bind(Flat flat) {
@@ -64,6 +66,9 @@ public class FlatAdapter extends RecyclerView.Adapter<FlatAdapter.ViewHolder> im
             flatAddressTxtV.setText(flat.getAddress());
             flatDevTxtV.setText(flat.getDev());
             flatAreaTxtV.setText(String.valueOf(flat.getArea())+"m\u00B2");
+            if(mFlat.getLoved()==0){
+                heartImage.setVisibility(View.INVISIBLE);
+            }
 
         }
 

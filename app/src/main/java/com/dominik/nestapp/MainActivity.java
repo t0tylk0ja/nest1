@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+//obsluga actionbara
         TextView tv = new TextView(getApplicationContext());
         tv.setText("nest");
         tv.setTextColor(Color.parseColor("#FFFFFF"));
@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(tv);
         getSupportActionBar().setBackgroundDrawable(gradient);
+
+
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         // use a linear layout manager
