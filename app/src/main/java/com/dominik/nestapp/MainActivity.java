@@ -85,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         adapter.notifyDataSetChanged();
+        populateRecyclerView(filter);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

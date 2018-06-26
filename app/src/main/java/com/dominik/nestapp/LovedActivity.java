@@ -41,5 +41,6 @@ public class LovedActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         adapter.notifyDataSetChanged();
+        populateRecyclerView(filter);
     }
 }

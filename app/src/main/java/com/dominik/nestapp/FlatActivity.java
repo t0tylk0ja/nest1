@@ -44,6 +44,8 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
     TextView tvCentre;
     TextView tvAirport;
     TextView tvRailway;
+    ImageView heartImageView;
+    Button loveButton;
 
 
     private MapView mapView;
@@ -61,15 +63,7 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         TextView tv1=(TextView) findViewById(R.id.textView);
         tv1.setText(extras.getString("name"));
 
-        dbHelper = FlatDBHelper.getInstanse(this);
-        mFlatList=dbHelper.flatList("");
-
-        String name =extras.getString("name");
-        for(Flat x:mFlatList){
-            if(x.getName().equals(name)){
-                flatToShow=x;
-            }
-        }
+       getFlatToShow();
 
         ImageView imageView1 = (ImageView) findViewById(R.id.imageView);
         String maxUrl = flatToShow.getMaxUrl();
@@ -98,7 +92,7 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
         tvRooms.setText(String.valueOf(flatToShow.getRooms()));
         tvFloor.setText(String.valueOf(flatToShow.getFloor()));
 
-        ImageView heartImageView = (ImageView) findViewById(R.id.heartView);
+        heartImageView = (ImageView) findViewById(R.id.heartView);
         if(flatToShow.getLoved()==0){
             heartImageView.setVisibility(View.INVISIBLE);
         }
@@ -176,6 +170,45 @@ public class FlatActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
 
         });
+        //dodawanie do ulubionych
+        loveButton = (Button) findViewById(R.id.loveButton);
+        if(flatToShow.getLoved()==0){
+            loveButton.setText("ADD TO FAVOURITES");
+        }else{
+            loveButton.setText("DISLIKE");
+        }
+        loveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                int id = (int)flatToShow.getId();
+                if(flatToShow.getLoved()==0){
+                    dbHelper.updateLoved(id,1);
+                    heartImageView.setVisibility(View.VISIBLE);
+                    Toast.makeText(getApplicationContext(), "Added to favourites", Toast.LENGTH_SHORT).show();
+                    loveButton.setText("DISLIKE");
+
+                }else{
+                    dbHelper.updateLoved(id,0);
+                    heartImageView.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getApplicationContext(), "Moved from favourites", Toast.LENGTH_SHORT).show();
+                    loveButton.setText("ADD TO FAVOURITES");
+                }
+                getFlatToShow();
+            }
+
+        });
+    }
+
+    public void getFlatToShow(){
+        dbHelper = FlatDBHelper.getInstanse(this);
+        mFlatList=dbHelper.flatList("");
+
+        String name =extras.getString("name");
+        for(Flat x:mFlatList){
+            if(x.getName().equals(name)){
+                flatToShow=x;
+            }
+        }
     }
 
     public void setDistances(){

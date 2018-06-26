@@ -190,7 +190,10 @@ public static FlatDBHelper getInstanse(Context ctx){
     }
 
     public void updateLoved(int id, int value){
-
+        ContentValues cv = new ContentValues();
+        SQLiteDatabase db = this.getWritableDatabase();
+        cv.put("loved",value);
+        db.update("Flats",cv,"_id="+id,null);
     }
 
 

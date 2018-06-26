@@ -68,9 +68,9 @@
         <Button
             android:id="@+id/buttonSignup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_margin="10dp"
-            android:background="@color/myBlue2"
+            android:background="@drawable/bar"
             android:fontFamily="@font/roboto_bold"
             android:text="SIGN UP"
             android:textColor="@color/myWhite" />

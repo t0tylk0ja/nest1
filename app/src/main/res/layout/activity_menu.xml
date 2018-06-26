@@ -66,7 +66,7 @@
                android:fontFamily="@font/roboto"
                android:gravity="center_vertical"
                android:text="@string/browse"
-               android:textColor="@color/myPink"
+               android:textColor="@color/myBlue2"
                android:textSize="18sp" />
        </LinearLayout>
 
@@ -99,7 +99,7 @@
                 android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
                 android:text="@string/love"
-                android:textColor="@color/myPink"
+                android:textColor="@color/myBlue2"
                 android:textSize="18sp" />
         </LinearLayout>
     </RelativeLayout>
@@ -131,7 +131,7 @@
                 android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
                 android:text="@string/add"
-                android:textColor="@color/myPink"
+                android:textColor="@color/myBlue2"
                 android:textSize="18sp" />
         </LinearLayout>
     </RelativeLayout>
