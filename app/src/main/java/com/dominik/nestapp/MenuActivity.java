@@ -3,6 +3,8 @@ package com.dominik.nestapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,11 +44,14 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 //logging out the user
+                if(isOnline()){
                 firebaseAuth.signOut();
                 //closing activity
                 finish();
                 //starting login activity
-                startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+                startActivity(new Intent(getApplicationContext(), SignInActivity.class)); }else{
+                    Toast.makeText(getApplicationContext(), "Internet connection required", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });
@@ -55,9 +60,13 @@ public class MenuActivity extends AppCompatActivity {
         searchLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                if(isOnline()){
                 Context viewContext= view.getContext();
                 Intent intent = new Intent(viewContext, MainActivity.class);
                 startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Internet connection required", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });
@@ -66,9 +75,13 @@ public class MenuActivity extends AppCompatActivity {
         loveLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                if(isOnline()){
                 Context viewContext= view.getContext();
                 Intent intent = new Intent(viewContext, LovedActivity.class);
                 startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Internet connection required", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });
@@ -77,11 +90,26 @@ public class MenuActivity extends AppCompatActivity {
         addLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Context viewContext= view.getContext();
-                Intent intent = new Intent(viewContext, FinishActivity.class);
-                startActivity(intent);
+
+               if(isOnline()){
+                   Context viewContext= view.getContext();
+                   Intent intent = new Intent(viewContext, FinishActivity.class);
+                   startActivity(intent);
+               }else{
+                   Toast.makeText(getApplicationContext(), "Internet connection required", Toast.LENGTH_SHORT).show();
+               }
             }
 
         });
+    }
+
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

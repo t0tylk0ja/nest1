@@ -2,7 +2,10 @@ package com.dominik.nestapp;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -110,6 +113,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
     @Override
     public void onClick(View view) {
+        if(isOnline()){
 
         if(view == buttonSignup){
             registerUser();
@@ -118,6 +122,19 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         if(view == textViewSignin){
             //open login activity when user taps on the already registered textview
             startActivity(new Intent(this, SignInActivity.class));
+        }
+        }else{
+            Toast.makeText(getApplicationContext(), "Internet connection required", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

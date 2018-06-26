@@ -1,5 +1,8 @@
 package com.dominik.nestapp;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,7 +37,7 @@ public class PasswordActivity extends AppCompatActivity {
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+               if(isOnline()){
                 String email = edtEmail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
@@ -53,6 +56,9 @@ public class PasswordActivity extends AppCompatActivity {
                                 }
                             }
                         });
+            }else{
+                Toast.makeText(getApplicationContext(), "Internet connection required", Toast.LENGTH_SHORT).show();
+            }
             }
         });
 
@@ -62,5 +68,15 @@ public class PasswordActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
