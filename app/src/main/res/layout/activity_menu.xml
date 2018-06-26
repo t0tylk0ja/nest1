@@ -143,5 +143,5 @@
         android:background="@color/myWhite"
         android:fontFamily="@font/lato"
         android:text="@string/logout"
-        android:textColor="@color/myPink" />
+        android:textColor="@color/myBlue2" />
 </LinearLayout>
